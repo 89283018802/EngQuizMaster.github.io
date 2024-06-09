@@ -1,0 +1,553 @@
+header {
+    background: #6a9987;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+	width:97%;
+	position: relative;
+}
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 10px;
+}
+
+header nav ul li {
+    display: inline;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+header nav ul li a:hover {
+    background: #8fc1a9;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+
+}
+body.background-blur {
+    background: url('img/background.jpg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+body.background-blur::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: inherit;
+    filter: blur(0px);
+    z-index: -1;
+}
+.profile-icon {
+    background:#6a9987;
+    color: #6a9987;
+    padding: 5px 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.profile-icon img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+header h1 {
+    margin: 0;
+}
+#main-content, #sidebar {
+    position: relative;
+    z-index: 1;
+    background: rgba(230, 230, 230, 0.73); /* Прозрачный фон для блоков */
+}
+#sidebar {
+    width: 250px;
+    background: #6a9987;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+	justify-content: center;
+}
+.montserrat-<uniquifier> {
+  font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+.sidebar-logo {
+    margin-bottom: 20px;
+}
+.sidebar-logo img {
+  width: 95%;
+    border-radius: 50%;
+}
+.sidebar-line {
+    width: 90%;
+    height: 2px;
+    background: white;
+    margin: 20px 0; /* Добавляем отступы для линии */
+}
+#sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+	margin-top: 20px;
+}
+
+#sidebar nav ul li {
+    margin: 10px 0;
+}
+
+#sidebar nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+#main-content {
+    flex: 1;	
+}
+main {
+    padding: 20px;
+	 height: 96%; /* Высота main будет 100% минус высота header */
+    display: flex;
+    flex-direction: column;
+}
+
+#home {
+    width: 97%;
+    height: 90%;
+}
+.hidden {
+    display: none;
+	width:0;
+}
+#home .hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #6a9987, #8fc1a9); /* Градиент от нежного зелено-синего к светло-зеленому */
+    color: white;
+	height:85%;
+    padding: 30px;
+    border-radius: 12px;
+}
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #6a9987, #8fc1a9);
+    color: white;
+    padding: 30px;
+    border-radius: 12px;
+    flex-direction: row-reverse; /* Переворачивает порядок элементов, в следствие чего текст будет слева, а изображение справа */
+}
+
+.hero-text {
+    max-width: 60%;
+}
+
+.hero-image img {
+    width: 90%;
+    border-radius: 12px;
+}
+
+#start-button {
+    background: #ffaf87;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#start-button:hover {
+    background: #e59a73;
+}
+#test-menu {
+    width: 97%;
+    height: 100%;
+}
+#test-menu ul {
+    list-style-type: none;
+	font-size: 120%;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); /* корректируем число колонок для гибкости */
+    gap: 60px;
+}
+
+#test-menu li {
+    background-size: cover;  /* Обеспечивает покрытие фона изображением */
+    background-position: center;
+    font-family: "Montserrat", sans-serif;
+    color: white;
+    border-radius: 12px;
+    cursor: pointer;
+    width: 100%;
+    height: 150px;
+    transition: opacity 0.3s, transform 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#test-menu li:hover {
+    opacity: 0.85;  /* Фон становится чуть менее ярким */
+    transform: scale(1.05);  /* Увеличиваем размер при наведении */
+}
+
+#test-menu li[data-test-id="1"] {
+    background-image: url('img/test1.jpg');
+}
+#test-menu li[data-test-id="2"] {
+    background-image: url('img/test2.jpg');
+}
+#test-menu li[data-test-id="3"] {
+    background-image: url('img/test3.jpg');
+}
+#test-menu li[data-test-id="4"] {
+    background-image: url('img/test4.jpg');
+}
+#test-menu li[data-test-id="5"] {
+    background-image: url('img/test5.jpg');
+}
+#test-menu li[data-test-id="6"] {
+    background-image: url('img/test6.jpg');
+}
+#test-menu li[data-test-id="7"] {
+    background-image: url('img/test7.jpg');
+}
+#test-menu li[data-test-id="8"] {
+    background-image: url('img/test8.jpg');
+}
+#test-menu li[data-test-id="9"] {
+    background-image: url('img/test9.jpg');
+}
+#test-menu li[data-test-id="10"] {
+    background-image: url('img/test10.jpg');
+}
+#test-menu li[data-test-id="11"] {
+    background-image: url('img/test11.jpg');
+}
+#test-menu li[data-test-id="12"] {
+    background-image: url('img/test12.jpg');
+}
+
+#test-menu li .difficulty {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 8px;
+    padding: 5px 10px;
+    font-size: 14px;
+    color: white;
+}
+#test-menu button {
+    background: #ffaf87;  /* Мягкий оранжевый */
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#test-info {
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+#test-info button {
+    background: #ffaf87;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin: 10px 5px;
+}
+
+#quiz {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+#question-container {
+    margin-bottom: 20px;
+}
+
+#answer-options {
+    list-style-type: none;
+    padding: 0;
+}
+
+#answer-options li {
+    background: #6a9987;
+    color: white;
+    padding: 10px;
+    margin: 5px 0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#answer-options li:hover {
+    background: #84b39d;
+}
+
+#quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#results {
+    text-align: center;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+#results button {
+    background: #ffaf87;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #e59a73;
+}
+.section {
+    padding: 20px;
+    transition: all 0.5s ease-in-out;
+	width:97%;
+    background-color: white;
+}
+.team {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+	    background-color: white;
+    border-radius: 15px;
+}
+.team-member {
+    text-align: center;
+    margin: 10px;
+}
+.team-member img {
+    border-radius: 12px;
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+	border-radius: 50%;
+}
+.team-member h3 {
+    color: #6a9987;
+    margin: 10px 0 5px;
+}
+
+.team-member p {
+    color: #333;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #6a9987;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #0056b3;
+}
+#about .team-member {
+    display: inline-block;
+    text-align: center;
+    margin: 20px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+#about .team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+#about .team-member:hover img {
+    transform: scale(1.1);
+}
+
+#about .team-member h3 {
+    margin: 10px 0 5px;
+}
+
+#about .team-member p {
+    margin: 0;
+}
+
+#about .map-container {
+    margin-top: 40px;
+    width: 100%;
+    height: 400px;
+    animation: slideUp 1s ease-in-out;
+}
+
+#about .map-container iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+.about-section {
+    padding: 40px;
+    background: #f3f4f6;
+    border-radius: 12px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.about-section h2 {
+    text-align: center;
+    color: #6a9987;
+    margin-bottom: 20px;
+}
+#result-chart {
+    max-width: 400px;
+    margin: 0 auto;
+}
+.registration-form {
+    display: none;
+    position: absolute;
+    top: 50px; /* Отступ сверху, чтобы форма не перекрывалась */
+    right: 20px; /* Отступ справа */
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000; /* Чтобы форма была сверху остальных элементов */
+}
+
+.registration-form.active {
+    display: block; /* Показывает форму */
+}
+
+.registration-form input,
+.registration-form button {
+    width: 90%; /* Делает поля и кнопку на всю ширину формы */
+}
+.section.hidden {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.section.visible {
+  display: block;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 40px, 0);
+    }
+    to {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+    }
+}
+.animate {
+    opacity: 0;
+    animation-fill-mode: forwards;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+.fadeInUp {
+    animation-name: fadeInUp;
+}
+/* Секция "О проекте" */
+.project-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-text {
+    max-width: 60%;
+}
+
+.project-image-container {
+    max-width: 35%;
+}
+
+.project-image {
+    width: 90%;
+    height: auto;
+}

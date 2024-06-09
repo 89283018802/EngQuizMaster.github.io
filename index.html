@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>EngQuizMaster</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style>
+        /* Дополнительные стили для анимаций */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .slide-in-left {
+            animation: slideInLeft 1s ease-out;
+        }
+
+        .slide-in-right {
+            animation: slideInRight 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideInLeft {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+
+        @keyframes bounceIn {
+            0% { transform: scale(0); }
+            25% { transform: scale(1.3); }
+            50% { transform: scale(0.9); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .bounce-in {
+            animation: bounceIn 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="background-blur">
+<aside id="sidebar">
+    <div class="sidebar-logo">
+        <img src="images/profile-icon.png" alt="Логотип">
+    </div>
+    <div class="sidebar-line"></div>
+    <nav>
+        <ul>
+            <li><a href="#" id="home-btn">Главная</a></li>
+            <li><a href="#" id="test-menu-btn">Тесты</a></li>
+            <li><a href="#" id="program-btn">О проекте</a></li>
+            <li><a href="#" id="about-btn">О нас</a></li>
+        </ul>
+    </nav>
+</aside>
+<main id="main-content">
+    <header>
+        <h1>EngQuizMaster</h1>
+        <div class="profile-icon">
+            <img src="images/profile-icon1.png" alt="Профиль" id="profile-btn">
+        </div>
+    </header>
+    
+    <section id="home" class="section fade-in">
+        <div class="hero slide-in-right">
+            <div class="hero-text">
+                <h2>Тестируйте ваш английский</h2>
+                <p>Пройдите наши тесты и узнайте ваш уровень владения английским языком. Наши тесты охватывают различные аспекты: грамматика, чтение, словарный запас и многое другое.</p>
+                <button id="start-button">Начать тестирование</button>
+            </div>
+            <div class="hero-image">
+                <img src="images/image.png" alt="Герой">
+            </div>
+        </div>
+    </section>
+
+    <section id="test-menu" class="section hidden">
+        <h2>Меню тестов</h2>
+        <ul>
+            <li data-test-id="1">Тест A1: Начальный</li>
+            <li data-test-id="2">Тест A2: Ниже среднего</li>
+            <li data-test-id="3">Тест B1: Средний</li>
+            <li data-test-id="4">Тест B2: Выше среднего</li>
+            <li data-test-id="5">Тест C1: Продвинутый</li>
+            <li data-test-id="6">Тест C2: профессиональный уровень владения</li>
+        </ul>
+        <button id="back-to-home">На главную</button>
+    </section>
+
+    <section id="test-info" class="section hidden">
+        <h2>Тест <span id="test-number"></span></h2>
+        <p>Здесь описывается информация о выбранном тесте.</p>
+        <button id="start-test">Начать тест</button>
+        <button id="back-to-menu">Вернуться в меню</button>
+    </section>
+
+    <section id="quiz" class="section hidden">
+        <div id="question-counter">
+            Вопрос <span id="current-question"></span> из <span id="total-questions"></span>
+        </div>
+        <div id="question-text"></div>
+        <ul id="answer-options"></ul>
+        <button id="prev-question">Назад</button>
+        <button id="next-question">Далее</button>
+    </section>
+
+    <section id="results" class="section hidden">
+        <h2>Результаты</h2>
+        <p>Вы правильно ответили на <span id="correct-answers"></span> из <span id="total-quiz-questions"></span> вопросов.</p>
+        <canvas id="result-chart"></canvas>
+        <button id="back-to-main">На главную</button>
+    </section>
+
+    <section id="about" class="section hidden">
+        <h2>О нас</h2>
+        <p>Наша команда состоит из опытных профессионалов в различных областях, которые работают сообща для достижения общих целей.</p>
+        <div class="team">
+            <div class="team-member">
+                <img src="images/team1.jfif" alt="Член команды">
+                <h3>Давыдова Элеонора</h3>
+                <p>Дизайнер</p>
+            </div>
+            <div class="team-member">
+                <img src="images/team2.jfif" alt="Член команды">
+                <h3>Андреева Ирина</h3>
+                <p>Аналитик</p>
+            </div>
+            <div class="team-member">
+                <img src="images/team3.jfif" alt="Член команды">
+                <h3>Максимова София</h3>
+                <p>Тестировщик</p>
+            </div>
+            <div class="team-member">
+                <img src="images/team4.jfif" alt="Член команды">
+                <h3>Одинец Евгений</h3>
+                <p>Маркетолог</p>
+            </div>
+            <div class="team-member">
+                <img src="images/team5.jfif" alt="Член команды">
+                <h3>Токарев Михаил</h3>
+                <p>Разработчик</p>
+            </div>
+        </div>
+        <div class="map-container">
+            <iframe id="google-map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2709.749765139514!2d38.916323112985886!3d47.22147837103691!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40e3fd5001fc1667%3A0xfe469b563cb4b177!2z0J_QvtC70LjRgtC10YXQvdC40YfQtdGB0LrQuNC5INC40L3RgdGC0LjRgtGD0YIgKNGE0LjQu9C40LDQuykg0JTQk9Ci0KMg0LIg0LMuINCi0LDQs9Cw0L3RgNC-0LPQtQ!5e0!3m2!1sru!2sru!4v1717766782129!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </section>
+
+    <section id="program" class="section hidden">
+        <h2>О проекте</h2>
+        <div class="project-content">
+            <div class="project-text animate fadeInUp">
+                <p>
+                    Английский язык - это один из самых распространенных и важных языков в мире. Знание английского языка открывает множество возможностей в учебе, работе и путешествиях. Наш проект направлен на помощь людям в оценке и улучшении их знаний английского языка через тщательно подготовленные тесты.
+                </p>
+                <p class="animate fadeInUp" style="animation-delay: 0.2s;">
+                    Наша цель - предоставить пользователю комплексные инструменты для проверки своего уровня владения английским языком. Наши тесты охватывают следующие аспекты:
+                </p>
+                <ul class="animate fadeInUp" style="animation-delay: 0.4s;">
+                    <li>- Грамматика: позволяет проверить и улучшить знания о структуре языка;</li>
+                    <li>- Чтение: понять и интерпретировать написанные тексты;</li>
+                    <li>- Словарный запас: расширить количество слов, которые вы знаете и правильно используете;</li>
+                    <li>- Аудирование: поможет вам лучше понимать разговорную речь;</li>
+                    <li>- Письмо: развить навыки написания текстов на английском языке.</li>
+                </ul>
+                <p class="animate fadeInUp" style="animation-delay: 0.6s;">
+                    Мы уверены, что наши тесты помогут вам выявить ваши сильные и слабые стороны в изучении английского языка и предложат пути для усовершенствования. Наш сервис предоставляет не только тестирование, но и советы по улучшению навыков на основе ваших результатов. Наша команда включает экспертов в области лингвистики и цифрового обучения, чтобы гарантировать высокую точность и полезность тестов.
+                </p>
+                <p class="animate fadeInUp" style="animation-delay: 0.8s;">
+                    На нашем сайте вы также найдете множество полезных ресурсов, таких как статьи, видео-уроки и интерактивные упражнения, которые помогут вам непрерывно улучшать свои языковые навыки.
+                </p>
+                <p class="animate fadeInUp" style="animation-delay: 1s;">
+                    Присоединяйтесь к нашей сообществу и сделайте первый шаг к улучшению своих навыков владения английским языком с EngQuizMaster!
+                </p>
+            </div>
+            <div class="project-image-container animate fadeInUp" style="animation-delay: 1.2s;">
+                <img src="images/project-image.png" alt="Изображение проекта" class="project-image">
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- Форма регистрации (изначально скрытая) -->
+<div class="registration-form" id="registrationForm">
+    <form>
+        <input type="text" placeholder="Username" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit">Register</button>
+    </form>
+</div>
+
+<script src="scripts/scripts.js"></script>
+<script src="scripts/questions.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" defer></script>
+</body>
+</html>
